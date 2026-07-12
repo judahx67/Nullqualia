@@ -224,3 +224,6 @@ Input/*
 !Input/.gitkeep
 data/*
 !data/.gitkeep
+
+# secretctl: project-local binary + vault, not for source control
+.tools/

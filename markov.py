@@ -1,7 +1,7 @@
 """Order-2 word-level Markov chain over data/corpus.json.
 
 Harness contract (all model tiers): generate(prompt=None) -> str.
-CLI: python markov.py [n_samples]   |   python markov.py test
+CLI: python markov.py [n_samples]   |   python markov.py chat   |   python markov.py test
 """
 import json
 import random
@@ -68,9 +68,22 @@ def test():
     print("ok")
 
 
+def chat():
+    chain = load_chain()
+    print("nullqualia ready. ctrl-c/ctrl-d to quit.")
+    while True:
+        try:
+            prompt = input("> ").strip()
+        except (EOFError, KeyboardInterrupt):
+            break
+        print(generate(chain, prompt=prompt or None))
+
+
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "test":
         test()
+    elif len(sys.argv) > 1 and sys.argv[1] == "chat":
+        chat()
     else:
         n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
         chain = load_chain()
