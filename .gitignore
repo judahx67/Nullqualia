@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+slurs.txt
+
+# Personal data: keep the folders, ignore the contents
+Input/*
+!Input/.gitkeep
+data/*
+!data/.gitkeep
